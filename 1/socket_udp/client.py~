@@ -1,0 +1,16 @@
+from socket import *
+import pickle
+s=socket(AF_INET,SOCK_STREAM)
+
+s.connect(('localhost',8000))
+while True:
+
+	ch=input('Enter choice')
+	st=input('Enter string')
+	data=pickle.dumps((st,ch))
+	s.send(data)
+	data=s.recv(2048)
+	data=data.decode()
+	print(data)
+	if(data=="Invalid Operation"):
+		break

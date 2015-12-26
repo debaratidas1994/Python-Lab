@@ -1,0 +1,4 @@
+pi=3.14
+
+def sq(x):return x**0.5
+def sqrt(x):return x**0.5

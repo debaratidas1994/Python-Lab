@@ -1,0 +1,17 @@
+f=open('stateinfo.txt','r')
+import os
+try:
+	os.mkdir('op_files')
+except Exception as E:
+	print(E)
+d=dict()
+for i in f:
+	st_name,cy_name=i.strip().split(':')
+	d[st_name]=d.get(st_name,list())+[cy_name]
+os.chdir('op_files')
+for i in d:
+	g=open(i+'.txt','w')
+	for j in d[i]:
+		g.write(j+'\n')
+	g.close()
+f.close()

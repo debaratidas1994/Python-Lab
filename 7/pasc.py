@@ -1,0 +1,42 @@
+"""
+Given n, generate Pascal triangle for n rows. Use list of lists.
+If n = 5, output should be
+1
+1 1
+1 2
+1
+1 3 3 1
+1 4 6 4 1
+"""
+print("Pascal's Triangle Program")
+print("Enter the height: ",end="")
+n = int(input())
+l = []
+
+for i in range(n):
+	l.append([0]*(i+1))
+
+for i in range(n):
+	for j in range(min(i,n)+1):
+		if j==0 or j==i: l[i][j] = 1
+		else: l[i][j] = l[i-1][j-1] + l[i-1][j]
+
+for i in range(n):
+	print('{0}'.format(' '*(n-i+1)),end="")
+	print(" ".join(map(str,[x for x in l[i]])))
+	print()
+"""
+#mouli
+n=int(input())
+l=[[1]]
+for x in range(1,n):
+	t=l[-1]
+	l.append([1]+[t[i]+t[i-1] for i in range(1,len(t))]+[1])
+max_len=len(str(l[-1][len(l[-1])//2]))
+f='{0:^'+str(max_len)+'}'
+max=str(len(' '.join(map(f.format,l[-1]))))
+for i in l:
+	print(('{0:^'+max+'}').format(' '.join(map(f.format,i))))
+#print(l)
+
+"""+

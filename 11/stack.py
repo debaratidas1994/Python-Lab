@@ -1,0 +1,41 @@
+class OverFlow(Exception):
+	def __init__(self):
+		Exception.__init__(self,'Stack is Full. StackOverFlow occured.')
+class UnderFlow(Exception):
+	def __init__(self):
+		Exception.__init__(self,'Stack is Empty. StackUnderFlow occured.')
+class MyStack:
+	def __init__(self,size):
+		self.stack=[]
+		self.size=size
+	def push(self,x):
+		if len(self.stack)==self.size:
+			raise OverFlow()
+		else:
+			self.stack.append(x)
+	def pop(self):
+		if len(self.stack)==0:
+			raise UnderFlow()
+		else:
+			return self.stack.pop()
+	def display(self):
+		print('Bottom:',end=' ')
+		for i in self.stack:
+			print(i)
+		print('Top:',end=' ')
+p=MyStack(12)
+for i in range(12):
+	p.push(i)
+try:
+	p.push(0)
+except Exception as E:
+	print(E)
+p.display()
+for i in range(10):
+	print(p.pop())
+try:
+	p.pop()
+except Exception as E:
+	print(E)
+
+

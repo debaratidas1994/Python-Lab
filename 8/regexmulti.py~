@@ -1,0 +1,10 @@
+'''
+Do the following using regular expressions:-
+a) Find all occurrences of a word in a multiline string. The search
+must be case insensitive. Also find and display the starting index of
+each matched word in the input string.
+b) Given a line of text find all characters other than vowels and space
+characters.
+c) Given a list of strings find all strings that start with a digit or an
+underscore.
+'''

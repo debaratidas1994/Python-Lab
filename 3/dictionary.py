@@ -1,0 +1,39 @@
+'''
+Create a dictionary for words and their meanings. Write functions to add a
+new entry (word:meaning) , search for a particular word and retrieve
+meaning, given meaning find words with same meaning , remove an
+entry, display all words sorted alphabetically. [Program must be menu
+driven
+'''
+d=dict()
+rev=dict()
+def add_word(w,m):
+	d[w]=m
+	if m in rev:
+		rev[m].add(w)
+	else:
+		rev[m]=set([w])
+
+def search(w):
+	return d[w] if w in d else None
+def words_meaning(m):
+	return rev[m] if m in d else None
+def disp():
+	for i in sorted(d):
+		print(i,':',d[i])
+while True:
+	ch=input('Enter 1 for add_word; 2 for search; 3 for words_meaning; 4 for disp')
+	if ch==1:
+		w,m=input('Enter word,meaning').split(',')
+		add_word(w,m)
+	elif ch==2:
+		w=input('Enter word')
+		print(search(w))
+	elif ch==3:
+		m=input('Enter meaning')
+		print(words_meaning(m))
+	elif ch==4:
+		disp()
+	else:
+		break
+
